@@ -492,23 +492,6 @@ static void _p(const String attributes, const String p)
     }
 }
 
-static void _pInt(const String attributes, const String p)
-{
-    char tmp1[CODE_LENGTH];
-    if (attributes == NULL)
-    {
-        cat(tmp_code_html, "<p>%s</p>\n", p);
-        cat_str(code_html, "", tmp1);
-        cat_str(tmp1, tmp_code_html, code_html);
-    }
-    else
-    {
-        cat(tmp_code_html, "<p %s >%s</p>\n", attributes, p);
-        cat_str(code_html, "", tmp1);
-        cat_str(tmp1, tmp_code_html, code_html);
-    }
-}
-
 static void _button(const String attributes, const String button)
 {
     char tmp1[CODE_LENGTH];
@@ -662,6 +645,7 @@ static int _img(const String attributes)
         cat_str(code_html, "", tmp1);
         cat_str(tmp1, tmp_code_html, code_html);
     }
+    return OK;
 }
 
 static int _a(const String attributes, const String a)
@@ -679,6 +663,7 @@ static int _a(const String attributes, const String a)
         cat_str(code_html, "", tmp1);
         cat_str(tmp1, tmp_code_html, code_html);
     }
+    return OK;
 }
 
 static void _main_o(const String attributes)
@@ -903,6 +888,7 @@ static int _input(const String attributes)
         cat_str(code_html, "", tmp1);
         cat_str(tmp1, tmp_code_html, code_html);
     }
+    return OK;
 }
 
 static int _meta(const String attributes)
@@ -920,6 +906,7 @@ static int _meta(const String attributes)
         cat_str(code_html, "", tmp1);
         cat_str(tmp1, tmp_code_html, code_html);
     }
+    return OK;
 }
 
 static int _link(const String attributes)
@@ -937,6 +924,7 @@ static int _link(const String attributes)
         cat_str(code_html, "", tmp1);
         cat_str(tmp1, tmp_code_html, code_html);
     }
+    return OK;
 }
 
 static void _aside(const String attributes, const String aside)
@@ -1275,6 +1263,7 @@ static int _iframe(const String attributes)
         cat_str(code_html, "", tmp1);
         cat_str(tmp1, tmp_code_html, code_html);
     }
+    return OK;
 }
 
 static void _embed(const String attributes, const String em)
@@ -1449,6 +1438,7 @@ static int _tr(const String attributes, const String tr)
     cat(tmp_code_html, "<tr %s >%s</tr>\n", attributes, tr);
     cat_str(code_html, "", tmp1);
     cat_str(tmp1, tmp_code_html, code_html);
+    return OK;
 }
 
 static int _td(const String attributes, const String td)
@@ -1457,6 +1447,7 @@ static int _td(const String attributes, const String td)
     cat(tmp_code_html, "<td %s >%s</td>\n", attributes, td);
     cat_str(code_html, "", tmp1);
     cat_str(tmp1, tmp_code_html, code_html);
+    return OK;
 }
 
 static int _th(const String attributes, const String th)
@@ -1474,6 +1465,7 @@ static int _th(const String attributes, const String th)
         cat_str(code_html, "", tmp1);
         cat_str(tmp1, tmp_code_html, code_html);
     }
+    return OK;
 }
 
 static void _label(const String attributes, const String label)
@@ -1772,7 +1764,7 @@ void Chtml (struct chtml *html){
     html->article_c = _article_c;
     html->article = _article;
     html->header_o = _header_o;
-    html->header_c = _header_o;
+    html->header_c = _header_c;
     html->header_ = _header;
     html->footer = _footer;
     html->footer_o = _footer_o;
